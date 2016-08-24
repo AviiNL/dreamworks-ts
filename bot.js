@@ -140,7 +140,7 @@ bts.on('battlenet.user.verified', function(character) {
         db.update({'profile.cluid': character.profile.cluid}, character, function(err, numAffected, affectedDocuments, upsert) {
             bts.getGuildMember(character, function(err, body) {
                 if(tsRanks[body.rank] == 'social') {
-                    bts.unsetGroup(character.profile.cluid, 'grunt');
+                    bts.unsetGroup(character.profile.clid, 'grunt');
                 } else {
                     bts.setGroup(character.profile.clid, tsRanks[body.rank]);
                 }
@@ -155,7 +155,7 @@ bts.on('battlenet.user.verified', function(character) {
 
 bts.on('battlenet.user.notverified', function(error) {
     db.remove({'profile.cluid': error.profile.cluid});
-    bts.unsetGroup(error.profile.cluid, 'grunt');
+    bts.unsetGroup(error.profile.clid, 'grunt');
     bts.send(error.profile, 'Your verification failed and your permissions, if any, have been revoked');
     setTimeout(() => {
         bts.send(error.profile, 'Hello there, Please click [url=' + bts.getAuthUrl(error.profile.clid, error.profile.cluid) + ']here[/url] to authenticate');
