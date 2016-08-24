@@ -68,6 +68,7 @@ bts.on('teamspeak.chat.received', function(clid, message) {
 
         var cluid = bts.getCluid(clid);
 
+        // dont send a reply immediately
         setTimeout(() => {
 
             switch(command) {
@@ -146,8 +147,6 @@ bts.on('battlenet.user.verified', function(character) {
                 }
             });
 
-            // Only send the message if it's a new user.
-            
             bts.send(character.profile, 'Welcome ' + character.name + ', type !help for commands');
             
             db.persistence.compactDatafile();
