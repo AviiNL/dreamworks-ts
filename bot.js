@@ -2,7 +2,6 @@ try {
     var BattlenetTS = require('../battlenet-ts/battlenet-ts.js'); // bleeding edge version :3
     console.log('-==== USING DEVELOPMENT VERSION ====-');
 } catch( ex ) { 
-    console.log(ex);
     var BattlenetTS = require('battlenet-ts'); // package version
 }
 
