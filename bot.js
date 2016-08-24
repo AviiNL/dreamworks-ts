@@ -139,6 +139,9 @@ bts.on('battlenet.user.verified', function(character) {
         // Update stored clid.
         db.update({'profile.cluid': character.profile.cluid}, character, function(err, numAffected, affectedDocuments, upsert) {
             bts.getGuildMember(character, function(err, body) {
+
+                bts.send(character.profile, 'Welcome ' + character.name + ', you have been identified as a ' + guildRanks[body.rank] + ', and are assigned to ' + tsRanks[body.rank] + '. Type !help for commands');
+
                 if(tsRanks[body.rank] == 'social') {
                     bts.unsetGroup(character.profile.clid, 'grunt');
                 } else {
@@ -146,8 +149,6 @@ bts.on('battlenet.user.verified', function(character) {
                 }
             });
 
-            bts.send(character.profile, 'Welcome ' + character.name + ', type !help for commands');
-            
             db.persistence.compactDatafile();
         });
     });
