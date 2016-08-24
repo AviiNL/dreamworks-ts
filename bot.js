@@ -22,12 +22,12 @@ var guildRanks = {
 };
 
 var tsRanks = {
-    0: 'admin',
-    1: 'officer',
-    2: 'officer',
-    5: 'grunt',
-    6: 'grunt',
-    7: 'social'
+    0: 'Admin',
+    1: 'Officer',
+    2: 'Officer',
+    5: 'Grunt',
+    6: 'Grunt',
+    7: 'Social'
 }
 
 var bts = new BattlenetTS(JSON.parse(fs.readFileSync('./config.json', 'utf8')));
