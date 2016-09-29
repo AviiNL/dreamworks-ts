@@ -4,8 +4,8 @@ try {
 } catch( ex ) { 
     var BattlenetTS = require('battlenet-ts'); // package version
 }
-
-var Datastore = require('nedb');
+const fs = require('fs');
+const Datastore = require('nedb');
 
 var db = new Datastore('dreamworks.db');
 
@@ -44,7 +44,7 @@ bts.on('express.started', function(port, protocol){
 
 bts.on('error', function(err) {
     console.log(err);
-})
+});
 
 bts.on('teamspeak.client.connected', function(client) {
 	var clid  = client.clid;
