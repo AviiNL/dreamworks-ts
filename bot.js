@@ -148,7 +148,7 @@ bts.on('battlenet.user.verified', function(character) {
                 if(tsRanks[body.rank] === 'Social') {
                     bts.unsetGroup(character.profile.cluid, 'grunt');
                 } else {
-                    bts.setGroup(character.profile.clid, tsRanks[body.rank]);
+                    bts.setGroup(character.profile.cluid, tsRanks[body.rank]);
                 }
             });
 
