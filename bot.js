@@ -4,7 +4,9 @@ try {
 } catch( ex ) { 
     var BattlenetTS = require('battlenet-ts'); // package version
 }
+
 const fs = require('fs');
+
 const Datastore = require('nedb');
 
 var db = new Datastore('dreamworks.db');
