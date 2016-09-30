@@ -99,6 +99,7 @@ bts.on('teamspeak.chat.received', function(clid, message) {
                                 bts.send(clid, 'Your characters are: ' + chars.join(', '));
                             });
                         } else {
+                            // bts.poke(clid, "Seems like you are new here, DreamHammer has sent you a PM with info on how to authenticate and join the other channels");
                             bts.send(clid, 'You are not authenticated, Please click [url=' + bts.getAuthUrl(clid, cluid) + ']here[/url] to authenticate');
                         }
                     });
@@ -157,7 +158,6 @@ bts.on('battlenet.user.verified', function(character) {
 });
 
 bts.on('battlenet.user.notverified', function(error) {
-    console.log(error);
     db.remove({'profile.cluid': error.profile.cluid});
     bts.unsetGroup(error.profile.clid, 'grunt');
     bts.send(error.profile, 'Your verification failed and your permissions, if any, have been revoked');
