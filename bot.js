@@ -145,9 +145,9 @@ bts.on('battlenet.user.verified', function(character) {
                 bts.send(character.profile, 'Welcome ' + character.name + ', you have been identified as a ' + guildRanks[body.rank] + ', and are assigned to ' + tsRanks[body.rank] + '. Type !help for commands');
 
                 if(tsRanks[body.rank] === 'Social') {
-                    bts.unsetGroup(character.profile.clid, 'grunt');
+                    bts.unsetGroup(character.profile.cluid, 'grunt');
                 } else {
-                    bts.setGroup(character.profile.clid, tsRanks[body.rank]);
+                    bts.setGroup(character.profile.cluid, tsRanks[body.rank]);
                 }
             });
 
